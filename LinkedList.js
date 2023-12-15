@@ -107,21 +107,40 @@ class LinkedList {
     return { prev: null, curr: null, next: null };
   }
 
-  removeByIndex(index) {
-    if (this.head) {
-      const { prev, next } = this.getPrevCurrNextByIndex(index);
-      if (prev === null) {
-        this.head = this.head.next;
-        return 'Head Node is removed';
-      } else if (next === null) {
-        prev.next = null;
+  remove(index, value) {
+    if (index && !value) {
+      if (this.head) {
+        const { prev, next } = this.getPrevCurrNextByIndex(index);
+        if (prev === null) {
+          this.head = this.head.next;
+          return 'Head Node is removed';
+        } else if (next === null) {
+          prev.next = null;
+          return 'Node is removed';
+        }
+
+        prev.next = next;
         return 'Node is removed';
       }
-
-      prev.next = next;
-      return 'Node is removed';
     }
-    return null;
+    if (!index && value) {
+      if (this.head) {
+        const { prev, next } = this.getPrevCurrNextByValue(value);
+        if (prev === null) {
+          this.head = this.head.next;
+          return 'Head Node is removed';
+        } else if (next === null) {
+          prev.next = null;
+          return 'Node is removed';
+        }
+
+        prev.next = next;
+        return 'Node is removed';
+      }
+    }
+    if (index && value) {
+      return 'You Must choose remove by value or by index, you cannot choose both';
+    }
   }
 
   display() {
@@ -143,5 +162,5 @@ linkedList.append(3);
 linkedList.prepend(4);
 
 console.log(linkedList.display());
-console.log(linkedList.removeByIndex(2));
+console.log(linkedList.remove(null,1));
 console.log(linkedList.display());
