@@ -1,4 +1,4 @@
-//** Stack [] */
+//** Stack []
 
 //* Operations
 
@@ -9,8 +9,6 @@
 //? => size();
 //? => display();
 //? => clear();
-
-//***
 
 class Stack {
   constructor() {
@@ -58,9 +56,13 @@ console.log(stack.display()); // 1,2,3,4,5
 
 console.log(stack.isEmpty()); // false
 
+console.log(stack.size()); // 5
+
 stack.pop();
 
 console.log(stack.display()); // 1,2,3,4
+
+console.log(stack.size()); // 4
 
 stack.clear();
 
