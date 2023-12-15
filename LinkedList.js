@@ -25,6 +25,21 @@ class LinkedList {
     this.length = 0;
   }
 
+  append(value) {
+    const node = new Node(value);
+    this.length++;
+    if (!this.head) {
+      this.head = node;
+      return this.head;
+    }
+    let current = this.head;
+    while (current) {
+      current = current.next;
+    }
+    current.next = node;
+    return this.head;
+  }
+
   prepend(value) {
     const node = new Node(value);
     this.length++;
