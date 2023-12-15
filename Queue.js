@@ -116,32 +116,116 @@ class ObjQueue {
     this.queue = {};
     this.front = -1;
     this.rear = -1;
-    this.size = 0;
+    this.length = 0;
   }
 }
 
-const objQueue = new ObjQueue();
+// const objQueue = new ObjQueue();
 
-objQueue.enqueue(50);
-objQueue.enqueue(66);
-objQueue.enqueue(12);
-objQueue.enqueue(9);
-objQueue.enqueue(7);
+// objQueue.enqueue(50);
+// objQueue.enqueue(66);
+// objQueue.enqueue(12);
+// objQueue.enqueue(9);
+// objQueue.enqueue(7);
 
-console.log(objQueue.display()); // 1,2,3,4,5
+// console.log(objQueue.display()); // 1,2,3,4,5
 
-console.log(objQueue.isEmpty()); // false
+// console.log(objQueue.isEmpty()); // false
 
-console.log(objQueue.size()); // 5
+// console.log(objQueue.size()); // 5
 
-objQueue.dequeue();
+// objQueue.dequeue();
 
-console.log(objQueue.peek()); // 66
+// console.log(objQueue.peek()); // 66
 
-console.log(objQueue.display()); // 2,3,4,5
+// console.log(objQueue.display()); // 2,3,4,5
 
-console.log(objQueue.size()); // 4
+// console.log(objQueue.size()); // 4
 
-objQueue.clear();
+// objQueue.clear();
 
-console.log(objQueue.display()); //
+// console.log(objQueue.display()); //
+
+//* ( Queue )
+
+//? ==> isFull()
+class CircleQueue {
+  constructor(capacity) {
+    this.queue = new Array(capacity);
+    this.capacity = capacity;
+    this.front = -1;
+    this.rear = -1;
+    this.length = 0;
+  }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+
+  isFull() {
+    return this.length === this.capacity;
+  }
+
+  enqueue(value) {
+    if (this.isFull()) throw new Error('CircleQueue is full');
+    this.queue[++this.rear % this.capacity] = value;
+    if (this.front === -1) ++this.front;
+    this.length++;
+  }
+
+  dequeue() {
+    const value = this.queue[this.front];
+    this.queue[this.front] = null;
+    this.length--;
+    this.front = ++this.front % this.capacity;
+    return value;
+  }
+
+  peek() {
+    return this.queue[this.front];
+  }
+
+  size() {
+    return this.length;
+  }
+
+  display() {
+    return this.queue.toString();
+  }
+
+  clear() {
+    this.queue = new Array(this.capacity);
+    this.front = -1;
+    this.rear = -1;
+    this.length = 0;
+  }
+}
+
+const circleQueue = new CircleQueue(5);
+
+circleQueue.enqueue(50);
+circleQueue.enqueue(66);
+circleQueue.enqueue(12);
+circleQueue.enqueue(9);
+circleQueue.enqueue(7);
+// circleQueue.enqueue(27);
+
+console.log(circleQueue.display()); // 1,2,3,4,5
+
+console.log(circleQueue.isEmpty()); // false
+
+console.log(circleQueue.size()); // 5
+
+circleQueue.dequeue();
+
+circleQueue.enqueue(27);
+
+console.log(circleQueue.peek()); // 66
+
+console.log(circleQueue.display()); // 66,12,9,7
+
+console.log(circleQueue.size()); // 5
+
+circleQueue.clear();
+
+console.log(circleQueue.display()); //
