@@ -25,6 +25,10 @@ class LinkedList {
     this.length = 0;
   }
 
+  isEmpty() {
+    return this.length === 0;
+  }
+
   append(value) {
     const node = new Node(value);
     this.length++;
@@ -76,8 +80,8 @@ class LinkedList {
           prev = prev.next;
           count++;
         }
-        curr = prev.next;
-        next = curr.next;
+        curr = prev?.next;
+        next = curr?.next;
         return { prev, curr, next };
       }
       return { prev: null, curr: null, next: null };
@@ -118,9 +122,10 @@ class LinkedList {
           prev.next = null;
           return 'Node is removed';
         }
-
-        prev.next = next;
-        return 'Node is removed';
+        if (prev.next !== null && next !== null) {
+          prev.next = next;
+          return 'Node is removed';
+        }
       }
     }
     if (!index && value) {
@@ -141,6 +146,15 @@ class LinkedList {
     if (index && value) {
       return 'You Must choose remove by value or by index, you cannot choose both';
     }
+    return null;
+  }
+
+  peek() {
+    return this.head.value;
+  }
+
+  size() {
+    return this.length;
   }
 
   display() {
@@ -152,6 +166,11 @@ class LinkedList {
     }
     return str;
   }
+
+  clear() {
+    this.head = null;
+    return this.head;
+  }
 }
 
 const linkedList = new LinkedList();
@@ -161,6 +180,9 @@ linkedList.prepend(2);
 linkedList.append(3);
 linkedList.prepend(4);
 
+// console.log(linkedList.display());
+// console.log(linkedList.remove(null, 1));
+// console.log(linkedList.display());
 console.log(linkedList.display());
-console.log(linkedList.remove(null,1));
+linkedList.clear();
 console.log(linkedList.display());
