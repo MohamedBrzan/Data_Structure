@@ -149,7 +149,7 @@ class LinkedList {
     return null;
   }
 
-  peek() {
+  getHead() {
     return this.head.value;
   }
 
