@@ -53,12 +53,13 @@ class LinkedList {
   }
 
   getPrevCurrNextByIndex(index) {
+    if (index > this.length - 1) throw new Error('index out of bounds');
     if (index === 0) {
       if (this.head) {
         return {
           prev: null,
           curr: this.head,
-          next: his.head.next,
+          next: this.head.next,
         };
       }
       return { prev: null, curr: null, next: null };
@@ -106,6 +107,23 @@ class LinkedList {
     return { prev: null, curr: null, next: null };
   }
 
+  removeByIndex(index) {
+    if (this.head) {
+      const { prev, next } = this.getPrevCurrNextByIndex(index);
+      if (prev === null) {
+        this.head = this.head.next;
+        return 'Head Node is removed';
+      } else if (next === null) {
+        prev.next = null;
+        return 'Node is removed';
+      }
+
+      prev.next = next;
+      return 'Node is removed';
+    }
+    return null;
+  }
+
   display() {
     let str = '';
     let prev = this.head;
@@ -125,4 +143,5 @@ linkedList.append(3);
 linkedList.prepend(4);
 
 console.log(linkedList.display());
-console.log(linkedList.test(4));
+console.log(linkedList.removeByIndex(2));
+console.log(linkedList.display());
