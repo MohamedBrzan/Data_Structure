@@ -83,12 +83,28 @@ class LinkedList {
     }
   }
 
-  test(index) {
-    const { prev, curr, next } = this.getPrevCurrNextByIndex(index);
-    return { prev, curr, next };
-  }
+  getPrevCurrNextByValue(value) {
+    if (this.head) {
+      if (this.head.value === value) {
+        return {
+          prev: null,
+          curr: this.head,
+          next: this.head.next,
+        };
+      }
+      let prev = this.head;
+      let curr;
+      let next;
+      while (prev.next.value !== value) {
+        prev = prev.next;
+      }
+      curr = prev.next;
+      next = curr.next;
+      return { prev, curr, next };
+    }
 
-  getPrevCurrNextByValue(index) {}
+    return { prev: null, curr: null, next: null };
+  }
 
   display() {
     let str = '';
@@ -109,4 +125,4 @@ linkedList.append(3);
 linkedList.prepend(4);
 
 console.log(linkedList.display());
-console.log(linkedList.test(3));
+console.log(linkedList.test(4));
