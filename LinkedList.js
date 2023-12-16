@@ -196,7 +196,22 @@ class LinkedList {
       } else {
         this.head = null;
       }
+      this.length--;
       return this.head;
+    }
+    return null;
+  }
+
+  removeFromEnd() {
+    if (this.head) {
+      const { prev } = this.getPrevCurrNextByIndex(this.length - 1);
+      if (this.head.next) {
+        prev.next = null;
+      } else {
+        this.head = null;
+      }
+      this.length--;
+      return prev;
     }
     return null;
   }
@@ -240,6 +255,7 @@ console.log(linkedList.display());
 // console.log(linkedList.contains(null, 22));
 // console.log(linkedList.search(5));
 
-console.log(linkedList.removeFromFront());
+// console.log(linkedList.removeFromFront());
+console.log(linkedList.removeFromEnd());
 
 console.log(linkedList.display());
