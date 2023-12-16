@@ -130,6 +130,23 @@ class LinkedList {
     return false;
   }
 
+  search(index, value) {
+    if (index >= 0 && !value) {
+      const { curr } = this.getPrevCurrNextByIndex(index);
+      if (curr !== null) return curr;
+      return null;
+    }
+    if (!index && value) {
+      const { curr } = this.getPrevCurrNextByValue(value);
+      if (curr !== null) return curr;
+      return null;
+    }
+    if (index && value) {
+      return 'You Must choose remove by value or by index, you cannot choose both';
+    }
+    return null;
+  }
+
   remove(index, value) {
     if (index && !value) {
       if (this.head) {
@@ -204,4 +221,5 @@ linkedList.prepend(4);
 // console.log(linkedList.display());
 console.log(linkedList.display());
 
-console.log(linkedList.contains(null,22));
+// console.log(linkedList.contains(null, 22));
+console.log(linkedList.search(5));
