@@ -28,7 +28,7 @@ class Node {
   }
 }
 
-class LinkedList {
+class SinglyLinkedList {
   constructor(head = null) {
     this.head = head;
     this.length = 0;
@@ -281,27 +281,27 @@ class LinkedList {
   }
 }
 
-const linkedList = new LinkedList();
+const sll = new SinglyLinkedList();
 
-linkedList.append(1);
-linkedList.prepend(2);
-linkedList.append(3);
-linkedList.prepend(4);
+sll.append(1);
+sll.prepend(2);
+sll.append(3);
+sll.prepend(4);
 
-// console.log(linkedList.display());
-// console.log(linkedList.remove(null, 1));
-// console.log(linkedList.display());
-// console.log(linkedList.display());
+// console.log(sll.display());
+// console.log(sll.remove(null, 1));
+// console.log(sll.display());
+// console.log(sll.display());
 
-// console.log(linkedList.contains(null, 22));
-// console.log(linkedList.search(5));
+// console.log(sll.contains(null, 22));
+// console.log(sll.search(5));
 
-// console.log(linkedList.removeFromFront());
-// console.log(linkedList.removeFromEnd());
+// console.log(sll.removeFromFront());
+// console.log(sll.removeFromEnd());
 
-console.log(linkedList.display());
+console.log(sll.display());
 
-console.log(linkedList.insert(2, 55));
-console.log(linkedList.getFirstNode());
-console.log(linkedList.display());
-console.log(linkedList.getLastNode());
+console.log(sll.insert(2, 55));
+console.log(sll.getFirstNode());
+console.log(sll.display());
+console.log(sll.getLastNode());
