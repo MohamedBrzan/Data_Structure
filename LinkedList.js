@@ -216,6 +216,21 @@ class LinkedList {
     return null;
   }
 
+  reverse() {
+    if (this.length > 0) {
+      let prev;
+      let curr = this.head;
+      let next;
+      while (curr) {
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+      }
+      this.head = prev;
+    }
+  }
+
   getHead() {
     return this.head.value;
   }
@@ -250,12 +265,16 @@ linkedList.prepend(4);
 // console.log(linkedList.display());
 // console.log(linkedList.remove(null, 1));
 // console.log(linkedList.display());
-console.log(linkedList.display());
+// console.log(linkedList.display());
 
 // console.log(linkedList.contains(null, 22));
 // console.log(linkedList.search(5));
 
 // console.log(linkedList.removeFromFront());
-console.log(linkedList.removeFromEnd());
+// console.log(linkedList.removeFromEnd());
+
+console.log(linkedList.display());
+
+console.log(linkedList.reverse());
 
 console.log(linkedList.display());
