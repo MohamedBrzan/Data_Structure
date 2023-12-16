@@ -5,6 +5,8 @@
 //? => isEmpty();
 //? => append();
 //? => prepend();
+//? => getFirstNode();
+//? => getLastNode();
 //? => contains(index,value); return boolean;
 //? => search(index,value); return value;
 //? => insert(index,value); return value;
@@ -61,6 +63,21 @@ class LinkedList {
     }
     this.head = node;
     return this.head;
+  }
+
+  getFirstNode() {
+    if (this.head) {
+      return this.head;
+    }
+    return null;
+  }
+
+  getLastNode() {
+    if (this.head) {
+      const { curr } = this.getPrevCurrNextByIndex(this.length - 1);
+      return curr;
+    }
+    return null;
   }
 
   getPrevCurrNextByIndex(index) {
@@ -157,6 +174,7 @@ class LinkedList {
     const { prev, curr } = this.getPrevCurrNextByIndex(index);
     prev.next = node;
     node.next = curr;
+    this.length++;
   }
 
   remove(index, value) {
@@ -283,6 +301,7 @@ linkedList.prepend(4);
 
 console.log(linkedList.display());
 
-console.log(linkedList.insert(2,55));
-
+console.log(linkedList.insert(2, 55));
+console.log(linkedList.getFirstNode());
 console.log(linkedList.display());
+console.log(linkedList.getLastNode());
