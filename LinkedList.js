@@ -5,7 +5,9 @@
 //? => isEmpty();
 //? => append();
 //? => prepend();
-//? => peek();
+//? => contains(index,value); return boolean;
+//? => search(index,value); return value;
+//? => getHead();
 //? => size();
 //? => display();
 //? => clear();
@@ -100,15 +102,32 @@ class LinkedList {
       let prev = this.head;
       let curr;
       let next;
-      while (prev.next.value !== value) {
+      while (prev.next && prev.next.value !== value) {
         prev = prev.next;
       }
-      curr = prev.next;
-      next = curr.next;
+      curr = prev?.next;
+      next = curr?.next;
       return { prev, curr, next };
     }
 
     return { prev: null, curr: null, next: null };
+  }
+
+  contains(index, value) {
+    if (index >= 0 && !value) {
+      const { curr } = this.getPrevCurrNextByIndex(index);
+      if (curr !== null) return true;
+      return false;
+    }
+    if (!index && value) {
+      const { curr } = this.getPrevCurrNextByValue(value);
+      if (curr !== null) return true;
+      return false;
+    }
+    if (index && value) {
+      return 'You Must choose remove by value or by index, you cannot choose both';
+    }
+    return false;
   }
 
   remove(index, value) {
@@ -184,5 +203,5 @@ linkedList.prepend(4);
 // console.log(linkedList.remove(null, 1));
 // console.log(linkedList.display());
 console.log(linkedList.display());
-linkedList.clear();
-console.log(linkedList.display());
+
+console.log(linkedList.contains(null,22));
