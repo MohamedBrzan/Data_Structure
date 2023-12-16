@@ -7,9 +7,13 @@
 //? => prepend();
 //? => contains(index,value); return boolean;
 //? => search(index,value); return value;
+//? => remove(index,value); return value;
+//? => removeFromFront();
+//? => removeFromEnd();
 //? => getHead();
 //? => size();
 //? => display();
+//? => reverse();
 //? => clear();
 
 //* Node
@@ -185,6 +189,18 @@ class LinkedList {
     return null;
   }
 
+  removeFromFront() {
+    if (this.head) {
+      if (this.head.next) {
+        this.head = this.head.next;
+      } else {
+        this.head = null;
+      }
+      return this.head;
+    }
+    return null;
+  }
+
   getHead() {
     return this.head.value;
   }
@@ -222,4 +238,8 @@ linkedList.prepend(4);
 console.log(linkedList.display());
 
 // console.log(linkedList.contains(null, 22));
-console.log(linkedList.search(5));
+// console.log(linkedList.search(5));
+
+console.log(linkedList.removeFromFront());
+
+console.log(linkedList.display());
