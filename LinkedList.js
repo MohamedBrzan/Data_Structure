@@ -7,6 +7,7 @@
 //? => prepend();
 //? => contains(index,value); return boolean;
 //? => search(index,value); return value;
+//? => insert(index,value); return value;
 //? => remove(index,value); return value;
 //? => removeFromFront();
 //? => removeFromEnd();
@@ -151,6 +152,13 @@ class LinkedList {
     return null;
   }
 
+  insert(index, value) {
+    const node = new Node(value);
+    const { prev, curr } = this.getPrevCurrNextByIndex(index);
+    prev.next = node;
+    node.next = curr;
+  }
+
   remove(index, value) {
     if (index && !value) {
       if (this.head) {
@@ -275,6 +283,6 @@ linkedList.prepend(4);
 
 console.log(linkedList.display());
 
-console.log(linkedList.reverse());
+console.log(linkedList.insert(2,55));
 
 console.log(linkedList.display());
