@@ -48,22 +48,22 @@ class Tree {
       return this.root;
     }
 
-    return this.insertNode(this.root, node);
+    return this.#insertNode(this.root, node);
   }
 
-  insertNode(root, node) {
+  #insertNode(root, node) {
     if (node.value < root.value) {
       if (root.left === null) {
         root.left = node;
         return root;
       }
-      return this.insertNode(root.left, node);
+      return this.#insertNode(root.left, node);
     } else if (node.value > root.value) {
       if (root.right === null) {
         root.right = node;
         return root;
       }
-      return this.insertNode(root.right, node);
+      return this.#insertNode(root.right, node);
     }
   }
 
@@ -90,6 +90,22 @@ class Tree {
       console.log(root);
     }
   }
+
+  contains(value) {
+    if (this.root.value === value) return true;
+    return this.#containsNode(this.root, value);
+  }
+
+  #containsNode(root, value) {
+    if (value < root?.value) {
+      if (value === root.left?.value) return true;
+      return this.#containsNode(root.left, value);
+    } else if (value > root?.value) {
+      if (value === root.right?.value) return true;
+      return this.#containsNode(root.right, value);
+    }
+    return false;
+  }
 }
 
 const tree = new Tree();
@@ -99,3 +115,4 @@ tree.insert(10);
 tree.insert(22);
 
 console.log(tree.getRoot());
+console.log(tree.contains());
