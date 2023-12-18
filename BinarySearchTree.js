@@ -6,6 +6,8 @@
 //? getRoot
 //? insert
 //? insertNode
+//? min
+//? max
 //? remove
 //? removeNode
 //? inOrder
@@ -67,6 +69,13 @@ class Tree {
     }
   }
 
+  min(root) {
+    if (!this.isEmpty()) {
+      if (!root.left) return root;
+      return this.min(root.left);
+    }
+  }
+
   inOrder(root) {
     if (root !== null) {
       this.inOrder(root.left);
@@ -121,6 +130,21 @@ class Tree {
       return this.#searchNode(root.right, value);
     }
   }
+
+  remove(value) {
+    return this.#removeNode(this.root, value);
+  }
+
+  #removeNode(root, value) {
+    if (root === null) return null;
+    if (value < root?.value) return this.#removeNode(root.left, value);
+    else if (value > root?.value) return this.#removeNode(root.right, value);
+    else {
+      if (!root.right && !root.left) return (root = null);
+      if (!root.right) return root.left;
+      if (!root.left) return root.right;
+    }
+  }
 }
 
 const tree = new Tree();
@@ -128,6 +152,10 @@ const tree = new Tree();
 tree.insert(20);
 tree.insert(10);
 tree.insert(22);
+tree.insert(25);
+tree.insert(28);
+tree.insert(21);
+tree.insert(19);
+tree.insert(12);
 
 console.log(tree.getRoot());
-console.log(tree.search(22));
