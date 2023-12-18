@@ -76,6 +76,13 @@ class Tree {
     }
   }
 
+  max(root) {
+    if (!this.isEmpty()) {
+      if (!root.right) return root;
+      return this.max(root.right);
+    }
+  }
+
   inOrder(root) {
     if (root !== null) {
       this.inOrder(root.left);
