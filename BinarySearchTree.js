@@ -106,6 +106,21 @@ class Tree {
     }
     return false;
   }
+
+  search(value) {
+    if (this.root.value === value) return this.root;
+    return this.#searchNode(this.root, value);
+  }
+
+  #searchNode(root, value) {
+    if (value < root?.value) {
+      if (value === root.left?.value) return root.left;
+      return this.#searchNode(root.left, value);
+    } else if (value > root?.value) {
+      if (value === root.right?.value) return root.right;
+      return this.#searchNode(root.right, value);
+    }
+  }
 }
 
 const tree = new Tree();
@@ -115,4 +130,4 @@ tree.insert(10);
 tree.insert(22);
 
 console.log(tree.getRoot());
-console.log(tree.contains());
+console.log(tree.search(22));
