@@ -3,11 +3,10 @@
 //* Operations
 
 //? => hash();
-//? => add();
+//? => set();
+//? => get();
 //? => remove();
-//? => size();
 //? => display();
-//? => clear();
 
 class HashTable {
   constructor(capacity) {
