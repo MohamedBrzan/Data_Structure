@@ -66,6 +66,14 @@ class Tree {
       return this.insertNode(root.right, node);
     }
   }
+
+  inOrder(root) {
+    if (root !== null) {
+      this.inOrder(root.left);
+      console.log(root);
+      this.inOrder(root.right);
+    }
+  }
 }
 
 const tree = new Tree();
@@ -74,4 +82,4 @@ tree.insert(20);
 tree.insert(10);
 tree.insert(22);
 
-console.log(tree.getRoot())
+console.log(tree.getRoot());
