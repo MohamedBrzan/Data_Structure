@@ -74,6 +74,14 @@ class Tree {
       this.inOrder(root.right);
     }
   }
+
+  preOrder(root) {
+    if (root !== null) {
+      console.log(root);
+      this.preOrder(root.left);
+      this.preOrder(root.right);
+    }
+  }
 }
 
 const tree = new Tree();
