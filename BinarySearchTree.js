@@ -69,17 +69,17 @@ class Tree {
     }
   }
 
-  min(root) {
+  #min(root) {
     if (!this.isEmpty()) {
       if (!root.left) return root;
-      return this.min(root.left);
+      return this.#min(root.left);
     }
   }
 
-  max(root) {
+  #max(root) {
     if (!this.isEmpty()) {
       if (!root.right) return root;
-      return this.max(root.right);
+      return this.#max(root.right);
     }
   }
 
@@ -143,14 +143,19 @@ class Tree {
   }
 
   #removeNode(root, value) {
-    if (root === null) return null;
-    if (value < root?.value) return this.#removeNode(root.left, value);
-    else if (value > root?.value) return this.#removeNode(root.right, value);
+    if (root === null) return root;
+    else if (value < root.value) root.left = this.#removeNode(root.left, value);
+    else if (value > root.value)
+      root.right = this.#removeNode(root.right, value);
     else {
-      if (!root.right && !root.left) return (root = null);
+      if (!root.right && !root.left) return null;
       if (!root.right) return root.left;
       if (!root.left) return root.right;
+      root.value = this.#min(root.right);
+      console.log('value => ', root.value);
+      root.right = this.#removeNode(root.right, root.value);
     }
+    return root;
   }
 }
 
@@ -165,4 +170,8 @@ tree.insert(21);
 tree.insert(19);
 tree.insert(12);
 
+console.log(tree.getRoot());
+console.log('-------------------------------------');
+tree.remove(21);
+console.log('-------------------------------------');
 console.log(tree.getRoot());
