@@ -1,6 +1,6 @@
 import { SinglyLinkedList } from './LinkedList.js';
 
-class ArrQueue {
+class Queue {
   constructor() {
     this.queue = new SinglyLinkedList();
   }
@@ -34,7 +34,7 @@ class ArrQueue {
   }
 }
 
-const arrQueue = new ArrQueue();
+const arrQueue = new Queue();
 
 console.log(arrQueue.isEmpty());
 
@@ -43,7 +43,6 @@ arrQueue.enqueue(2);
 arrQueue.enqueue(3);
 arrQueue.enqueue(4);
 arrQueue.enqueue(5);
-
 
 console.log(arrQueue.size());
 console.log(arrQueue.peek());
