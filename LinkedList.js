@@ -28,7 +28,7 @@ class Node {
   }
 }
 
-class SinglyLinkedList {
+export class SinglyLinkedList {
   constructor(head = null) {
     this.head = head;
     this.length = 0;
@@ -281,12 +281,12 @@ class SinglyLinkedList {
   }
 }
 
-const sll = new SinglyLinkedList();
+// const sll = new SinglyLinkedList();
 
-sll.append(1);
-sll.prepend(2);
-sll.append(3);
-sll.prepend(4);
+// sll.append(1);
+// sll.prepend(2);
+// sll.append(3);
+// sll.prepend(4);
 
 // console.log(sll.display());
 // console.log(sll.remove(null, 1));
@@ -299,9 +299,9 @@ sll.prepend(4);
 // console.log(sll.removeFromFront());
 // console.log(sll.removeFromEnd());
 
-console.log(sll.display());
+// console.log(sll.display());
 
-console.log(sll.insert(2, 55));
-console.log(sll.getFirstNode());
-console.log(sll.display());
-console.log(sll.getLastNode());
+// console.log(sll.insert(2, 55));
+// console.log(sll.getFirstNode());
+// console.log(sll.display());
+// console.log(sll.getLastNode());
